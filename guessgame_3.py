@@ -7,83 +7,58 @@
 import random
 count =0
 inp=1
-cont='No'
 print "1. Easy"
 print "2. Hard"
 mode=int(raw_input("Enter your choice (1 or 2): "))
 if (mode==1):
     randnum=random.randint(1, 20)
-    print "You have 7 chances!"
-    print "Guess a number between 1 & 20.  Enter 0 to give up!"
     while (inp!=0 and count<7):
-            inp=int(raw_input("Enter your guess: "))
+            inp=int(raw_input("Guess a number between 1 & 20.  Enter 0 to give up! : "))
             count+=1
-            if(count==7):
-                print count," guesses were made!"
-                print "The correct answer is", randnum
-                cont=raw_input("Do you want to play again? (Yes or No) : ")
-                if (cont=='Yes' or cont=='yes' or cont=='y' or cont=='Y'):
-                    count = 0
-                    randnum=random.randint(1, 20)
-                    continue
-                else:
-                    print "BYE!"
-                    break
-            if (inp==0):
-                count-=1
-                print "You quit,", count,"guesses were made!"
-                print "The correct answer is", randnum
-                exit
-            elif (inp-randnum>0):
+            if (inp-randnum>0):
                 print "TOO HIGH!"
             elif(inp-randnum<0):
                 print "TOO LOW!"
-            elif (inp==randnum):
-                print "You got it right!"
+            if (inp==randnum):
                 print count,"guesses were made!"
-                cont=raw_input("Do you want to play again? (Yes or No) : ")
-                if (cont=='Yes' or cont=='yes' or cont=='y' or cont=='Y'):
+                cont=raw_input("Do you want to play again? (Y or N) : ")
+                if (cont=='Y'):
                     count = 0
-                    randnum=random.randint(1, 20)
-                    continue                   
                 else:
                     print "BYE!"
-                    break
+            elif (inp==0):
+                count-=1
+                print "You quit,", count," guesses were made!"
+                print "The correct answer is", randnum
+                exit
+            elif(count==6):
+                print count," guesses were made!"
+                print "The correct answer is", randnum
+                cont=raw_input("Do you want to play again? (Y or N) : ")
+                if (cont=='Y'):
+                    count = 0
+                else:
+                    print "BYE!"
+                    exit()
 elif (mode==2):
-    randnum=random.randint(1, 100)
-    print "You have 10 chances!"
-    print "Guess a number between 1 & 100.  Enter 0 to give up!"
-    while (inp!=0 and count<10):
-            inp=int(raw_input("Enter your guess: "))
+        randnum=random.randint(1, 100)
+        while (inp!=0 and count<10):
+            inp=int(raw_input("Guess a number between 1 & 100.  Enter 0 to give up! : "))
             count+=1
-            if(count==10):
-                print count," guesses were made!"
-                print "The correct answer is", randnum
-                cont=raw_input("Do you want to play again? (Yes or No) : ")
-                if (cont=='Yes' or cont=='yes' or cont=='y' or cont=='Y'):
-                    count = 0
-                    randnum=random.randint(1, 100)
-                    continue                 
-                else:
-                    print "BYE!"
-                    break
-            if (inp==0):
-                count-=1
-                print "You quit,", count,"guesses were made!"
-                print "The correct answer is", randnum
-                exit
-            elif (inp-randnum>0):
+            if (inp-randnum>0):
                 print "TOO HIGH!"
             elif(inp-randnum<0):
                 print "TOO LOW!"
-            elif (inp==randnum):
-                print "You got it right!"
+            if (inp==randnum):
                 print count,"guesses were made!"
-                cont=raw_input("Do you want to play again? (Yes or No) : ")
-                if (cont=='Yes' or cont=='yes' or cont=='y' or cont=='Y'):
-                    count = 0
-                    randnum=random.randint(1, 100)
-                    continue
+            elif (inp==0):
+                count-=1
+                print "You quit,", count," guesses were made!"
+                print "The correct answer is", randnum
+                exit
+            elif(count==9):
+                cont=raw_input("Do you want to play again? (Y or N) : ")
+                if (cont=='Y'):
+                    count =0
                 else:
                     print "BYE!"
-                    break
